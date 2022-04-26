@@ -52,7 +52,7 @@ def get_pass(salt, passphrase):
     template = r'[A-z 0-9 . , : ; ? ! * + % - < > @ { } _ {} $ # \) ( / \\ \' \[ \] | " ~ & ^]'
     start = 1000  # Рекомендуется использоваться по крайней мере 100000 итераций SHA-256
 
-    while not (check(password)):  # Как задать необязательные параменты, который пользователь может ввести или не ввести?
+    while not (check(password)):  
         key = hashlib.pbkdf2_hmac('sha1', passphrase, salt, start, dklen=64)  # Получает ключ в 64 байта
         key = key.decode('utf-8', 'ignore')
         password = re.findall(template, key)
